@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.API\\HRM.API.csproj": {}
+    "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\hrm.api\\HRM.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.API\\HRM.API.csproj": {
+    "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\hrm.api\\HRM.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.API\\HRM.API.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\hrm.api\\HRM.API.csproj",
         "projectName": "HRM.API",
-        "projectPath": "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.API\\HRM.API.csproj",
+        "projectPath": "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\hrm.api\\HRM.API.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.API\\obj\\",
+        "outputPath": "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\hrm.api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config"

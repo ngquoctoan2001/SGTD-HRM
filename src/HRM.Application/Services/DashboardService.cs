@@ -50,8 +50,9 @@ public class DashboardService : IDashboardService
 
         // Upcoming Interviews (next 30 days)
         var upcomingDate = DateTime.UtcNow;
-        var upcomingInterviews = await _interviewRepo.FindAsync(i =>
-            i.InterviewDate >= upcomingDate && i.Status == InterviewStatus.Scheduled);
+        var upcomingInterviews = await _interviewRepo.FindAsync(
+            i => i.InterviewDate >= upcomingDate && i.Status == InterviewStatus.Scheduled,
+            i => i.Candidate, i => i.Candidate.JobPosting);
         var upcomingList = upcomingInterviews.OrderBy(i => i.InterviewDate).Take(5).ToList();
 
         // Recruitment Trend (last 6 months)
@@ -71,7 +72,8 @@ public class DashboardService : IDashboardService
         }).ToList();
 
         // Recent Leave Requests (latest 5)
-        var (recentLeaves, _) = await _leaveRepo.GetPagedAsync(1, 5);
+        var (recentLeaves, _) = await _leaveRepo.GetPagedAsync(1, 5,
+            null, null, l => l.Employee);
         var recentLeavesDtos = _mapper.Map<List<RecentLeaveRequestDto>>(recentLeaves);
 
         // Map upcoming interviews

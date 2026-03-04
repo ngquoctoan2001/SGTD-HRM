@@ -90,7 +90,8 @@ public class AttendanceService : IAttendanceService
 
     public async Task<ApiResponse<PagedResult<AttendanceRecordDto>>> GetAllAsync(QueryParameters p)
     {
-        var (items, total) = await _repo.GetPagedAsync(p.PageNumber, p.PageSize);
+        var (items, total) = await _repo.GetPagedAsync(p.PageNumber, p.PageSize,
+            null, null, a => a.Employee);
         var dtos = _mapper.Map<IEnumerable<AttendanceRecordDto>>(items);
         return ApiResponse<PagedResult<AttendanceRecordDto>>.Ok(new PagedResult<AttendanceRecordDto> { Items = dtos, TotalCount = total, PageNumber = p.PageNumber, PageSize = p.PageSize });
     }
@@ -139,7 +140,8 @@ public class LeaveService : ILeaveService
 
     public async Task<ApiResponse<PagedResult<LeaveRequestDto>>> GetAllAsync(QueryParameters p)
     {
-        var (items, total) = await _repo.GetPagedAsync(p.PageNumber, p.PageSize);
+        var (items, total) = await _repo.GetPagedAsync(p.PageNumber, p.PageSize,
+            null, null, l => l.Employee);
         return ApiResponse<PagedResult<LeaveRequestDto>>.Ok(new PagedResult<LeaveRequestDto> { Items = _mapper.Map<IEnumerable<LeaveRequestDto>>(items), TotalCount = total, PageNumber = p.PageNumber, PageSize = p.PageSize });
     }
 
@@ -197,7 +199,8 @@ public class PayrollService : IPayrollService
 
     public async Task<ApiResponse<PagedResult<PayrollSlipDto>>> GetAllAsync(QueryParameters p)
     {
-        var (items, total) = await _repo.GetPagedAsync(p.PageNumber, p.PageSize);
+        var (items, total) = await _repo.GetPagedAsync(p.PageNumber, p.PageSize,
+            null, null, p2 => p2.Employee);
         return ApiResponse<PagedResult<PayrollSlipDto>>.Ok(new PagedResult<PayrollSlipDto> { Items = _mapper.Map<IEnumerable<PayrollSlipDto>>(items), TotalCount = total, PageNumber = p.PageNumber, PageSize = p.PageSize });
     }
 
@@ -245,7 +248,8 @@ public class JobPostingService : IJobPostingService
 
     public async Task<ApiResponse<PagedResult<JobPostingDto>>> GetAllAsync(QueryParameters p)
     {
-        var (items, total) = await _repo.GetPagedAsync(p.PageNumber, p.PageSize);
+        var (items, total) = await _repo.GetPagedAsync(p.PageNumber, p.PageSize,
+            null, null, j => j.Candidates);
         return ApiResponse<PagedResult<JobPostingDto>>.Ok(new PagedResult<JobPostingDto> { Items = _mapper.Map<IEnumerable<JobPostingDto>>(items), TotalCount = total, PageNumber = p.PageNumber, PageSize = p.PageSize });
     }
 
@@ -285,7 +289,8 @@ public class CandidateService : ICandidateService
 
     public async Task<ApiResponse<PagedResult<CandidateDto>>> GetAllAsync(QueryParameters p)
     {
-        var (items, total) = await _repo.GetPagedAsync(p.PageNumber, p.PageSize);
+        var (items, total) = await _repo.GetPagedAsync(p.PageNumber, p.PageSize,
+            null, null, c => c.JobPosting);
         return ApiResponse<PagedResult<CandidateDto>>.Ok(new PagedResult<CandidateDto> { Items = _mapper.Map<IEnumerable<CandidateDto>>(items), TotalCount = total, PageNumber = p.PageNumber, PageSize = p.PageSize });
     }
 
@@ -325,7 +330,8 @@ public class InterviewService : IInterviewService
 
     public async Task<ApiResponse<PagedResult<InterviewScheduleDto>>> GetAllAsync(QueryParameters p)
     {
-        var (items, total) = await _repo.GetPagedAsync(p.PageNumber, p.PageSize);
+        var (items, total) = await _repo.GetPagedAsync(p.PageNumber, p.PageSize,
+            null, null, i => i.Candidate);
         return ApiResponse<PagedResult<InterviewScheduleDto>>.Ok(new PagedResult<InterviewScheduleDto> { Items = _mapper.Map<IEnumerable<InterviewScheduleDto>>(items), TotalCount = total, PageNumber = p.PageNumber, PageSize = p.PageSize });
     }
 
@@ -373,7 +379,8 @@ public class PerformanceService : IPerformanceService
 
     public async Task<ApiResponse<PagedResult<PerformanceReviewDto>>> GetAllAsync(QueryParameters p)
     {
-        var (items, total) = await _repo.GetPagedAsync(p.PageNumber, p.PageSize);
+        var (items, total) = await _repo.GetPagedAsync(p.PageNumber, p.PageSize,
+            null, null, pr => pr.Employee);
         return ApiResponse<PagedResult<PerformanceReviewDto>>.Ok(new PagedResult<PerformanceReviewDto> { Items = _mapper.Map<IEnumerable<PerformanceReviewDto>>(items), TotalCount = total, PageNumber = p.PageNumber, PageSize = p.PageSize });
     }
 
