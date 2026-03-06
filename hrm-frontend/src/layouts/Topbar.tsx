@@ -6,39 +6,41 @@ import {
 } from '@heroicons/react/24/outline';
 
 const pageTitles: Record<string, string> = {
-    '/dashboard': 'Dashboard',
-    '/employees': 'Employees',
-    '/attendance': 'Attendance',
-    '/leave': 'Leave Management',
-    '/payroll': 'Payroll',
-    '/performance': 'Performance',
-    '/assets': 'Assets',
-    '/recruitment': 'Recruitment',
-    '/interview': 'Interviews',
-    '/reports': 'Reports',
+    '/dashboard': 'Bảng điều khiển',
+    '/employees': 'Quản lý Nhân sự',
+    '/attendance': 'Chấm công',
+    '/leave': 'Nghỉ phép',
+    '/payroll': 'Phiếu lương',
+    '/performance': 'Đánh giá năng lực',
+    '/assets': 'Quản lý Tài sản',
+    '/recruitment': 'Tuyển dụng',
+    '/interview': 'Lịch Phỏng vấn',
+    '/accounts': 'Hệ thống Tài khoản',
+    '/reports': 'Báo cáo & Thống kê',
+    '/profile': 'Hồ sơ Cá nhân',
 };
 
 export default function Topbar() {
     const location = useLocation();
-    const title = pageTitles[location.pathname] || 'Dashboard';
+    const title = pageTitles[location.pathname] || 'Bảng điều khiển';
 
     return (
         <header className="topbar">
             <div className="topbar-search">
                 <MagnifyingGlassIcon />
-                <input type="text" placeholder="Search employees, payroll, reports..." />
+                <input type="text" placeholder="Tìm kiếm nhân viên, phiếu lương..." />
             </div>
 
             <div className="topbar-right">
-                <div className="topbar-icon">
+                <div className="topbar-icon" style={{ background: 'var(--surface-container)' }}>
                     <BellIcon />
                 </div>
-                <div className="topbar-icon">
+                <div className="topbar-icon" style={{ background: 'var(--surface-container)' }}>
                     <Cog6ToothIcon />
                 </div>
                 <div className="topbar-title">
                     <h2>{title}</h2>
-                    <span>Overview</span>
+                    <span>Tổng quan hệ thống</span>
                 </div>
             </div>
         </header>

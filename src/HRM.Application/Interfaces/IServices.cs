@@ -13,6 +13,16 @@ public interface IAuthService
     Task<ApiResponse<AuthResponse>> RefreshTokenAsync(RefreshTokenRequest request);
 }
 
+public interface IUserService
+{
+    Task<ApiResponse<PagedResult<UserDto>>> GetAllAsync(QueryParameters parameters);
+    Task<ApiResponse<UserDto>> GetProfileAsync(int userId);
+    Task<ApiResponse<UserDto>> UpdateProfileAsync(int userId, UpdateProfileDto dto);
+    Task<ApiResponse<bool>> ChangePasswordAsync(int userId, ChangePasswordDto dto);
+    Task<ApiResponse<UserDto>> UpdateRoleAsync(int id, UpdateUserRoleDto dto);
+    Task<ApiResponse<bool>> DeleteAsync(int id);
+}
+
 public interface IEmployeeService
 {
     Task<ApiResponse<PagedResult<EmployeeDto>>> GetAllAsync(QueryParameters parameters);
@@ -96,5 +106,14 @@ public interface IAssetAssignmentService
 {
     Task<ApiResponse<PagedResult<AssetAssignmentDto>>> GetAllAsync(QueryParameters parameters);
     Task<ApiResponse<AssetAssignmentDto>> CreateAsync(CreateAssetAssignmentDto dto);
+    Task<ApiResponse<bool>> DeleteAsync(int id);
+}
+
+public interface IDepartmentService
+{
+    Task<ApiResponse<PagedResult<DepartmentDto>>> GetAllAsync(QueryParameters parameters);
+    Task<ApiResponse<DepartmentDto>> GetByIdAsync(int id);
+    Task<ApiResponse<DepartmentDto>> CreateAsync(CreateDepartmentDto dto);
+    Task<ApiResponse<DepartmentDto>> UpdateAsync(int id, CreateDepartmentDto dto);
     Task<ApiResponse<bool>> DeleteAsync(int id);
 }

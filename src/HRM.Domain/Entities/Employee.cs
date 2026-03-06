@@ -6,7 +6,8 @@ public class Employee : BaseEntity
 {
     public string Name { get; set; } = string.Empty;
     public string Title { get; set; } = string.Empty;
-    public string Department { get; set; } = string.Empty;
+    public int DepartmentId { get; set; }
+    public Department Department { get; set; } = null!;
     public string Email { get; set; } = string.Empty;
     public string Phone { get; set; } = string.Empty;
     public EmployeeStatus Status { get; set; } = EmployeeStatus.Active;
@@ -19,4 +20,5 @@ public class Employee : BaseEntity
     public ICollection<PayrollSlip> PayrollSlips { get; set; } = new List<PayrollSlip>();
     public ICollection<PerformanceReview> PerformanceReviews { get; set; } = new List<PerformanceReview>();
     public ICollection<AssetAssignment> AssetAssignments { get; set; } = new List<AssetAssignment>();
+    public ICollection<Contract> Contracts { get; set; } = new List<Contract>();
 }

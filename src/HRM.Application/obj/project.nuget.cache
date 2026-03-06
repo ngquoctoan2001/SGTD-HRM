@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PLq9pGb/xlQ=",
+  "dgSpecHash": "vHfYBMdgqDM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.Application\\HRM.Application.csproj",
+  "projectFilePath": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\HRM.Application\\HRM.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ADMIN\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

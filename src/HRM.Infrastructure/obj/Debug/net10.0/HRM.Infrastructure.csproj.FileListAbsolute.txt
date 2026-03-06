@@ -18,3 +18,23 @@ C:\Users\ADMIN\Downloads\HRM-SGTD\src\HRM.Infrastructure\obj\Debug\net10.0\refin
 C:\Users\ADMIN\Downloads\HRM-SGTD\src\HRM.Infrastructure\obj\Debug\net10.0\HRM.Infrastructure.pdb
 C:\Users\ADMIN\Downloads\HRM-SGTD\src\HRM.Infrastructure\obj\Debug\net10.0\HRM.Infrastructure.genruntimeconfig.cache
 C:\Users\ADMIN\Downloads\HRM-SGTD\src\HRM.Infrastructure\obj\Debug\net10.0\ref\HRM.Infrastructure.dll
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Infrastructure\bin\Debug\net10.0\HRM.Infrastructure.deps.json
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Infrastructure\bin\Debug\net10.0\HRM.Infrastructure.runtimeconfig.json
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Infrastructure\bin\Debug\net10.0\HRM.Infrastructure.dll
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Infrastructure\bin\Debug\net10.0\HRM.Infrastructure.pdb
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Infrastructure\bin\Debug\net10.0\HRM.Application.dll
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Infrastructure\bin\Debug\net10.0\HRM.Domain.dll
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Infrastructure\bin\Debug\net10.0\HRM.Application.pdb
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Infrastructure\bin\Debug\net10.0\HRM.Domain.pdb
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Infrastructure\obj\Debug\net10.0\HRM.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Infrastructure\obj\Debug\net10.0\HRM.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Infrastructure\obj\Debug\net10.0\HRM.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Infrastructure\obj\Debug\net10.0\HRM.Infrastructure.AssemblyInfo.cs
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Infrastructure\obj\Debug\net10.0\HRM.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Infrastructure\obj\Debug\net10.0\HRM.Infrastructure.sourcelink.json
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Infrastructure\obj\Debug\net10.0\HRM.Infr.94868923.Up2Date
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Infrastructure\obj\Debug\net10.0\HRM.Infrastructure.dll
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Infrastructure\obj\Debug\net10.0\refint\HRM.Infrastructure.dll
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Infrastructure\obj\Debug\net10.0\HRM.Infrastructure.pdb
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Infrastructure\obj\Debug\net10.0\HRM.Infrastructure.genruntimeconfig.cache
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Infrastructure\obj\Debug\net10.0\ref\HRM.Infrastructure.dll

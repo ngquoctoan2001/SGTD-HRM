@@ -14,3 +14,19 @@ C:\Users\ADMIN\Downloads\HRM-SGTD\src\HRM.Application\obj\Debug\net10.0\HRM.Appl
 C:\Users\ADMIN\Downloads\HRM-SGTD\src\HRM.Application\obj\Debug\net10.0\refint\HRM.Application.dll
 C:\Users\ADMIN\Downloads\HRM-SGTD\src\HRM.Application\obj\Debug\net10.0\HRM.Application.pdb
 C:\Users\ADMIN\Downloads\HRM-SGTD\src\HRM.Application\obj\Debug\net10.0\ref\HRM.Application.dll
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\bin\Debug\net10.0\HRM.Application.deps.json
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\bin\Debug\net10.0\HRM.Application.dll
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\bin\Debug\net10.0\HRM.Application.pdb
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\bin\Debug\net10.0\HRM.Domain.dll
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\bin\Debug\net10.0\HRM.Domain.pdb
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\obj\Debug\net10.0\HRM.Application.csproj.AssemblyReference.cache
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\obj\Debug\net10.0\HRM.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\obj\Debug\net10.0\HRM.Application.AssemblyInfoInputs.cache
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\obj\Debug\net10.0\HRM.Application.AssemblyInfo.cs
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\obj\Debug\net10.0\HRM.Application.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\obj\Debug\net10.0\HRM.Application.sourcelink.json
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\obj\Debug\net10.0\HRM.Appl.CBCB69CE.Up2Date
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\obj\Debug\net10.0\HRM.Application.dll
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\obj\Debug\net10.0\refint\HRM.Application.dll
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\obj\Debug\net10.0\HRM.Application.pdb
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\obj\Debug\net10.0\ref\HRM.Application.dll

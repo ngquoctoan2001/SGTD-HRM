@@ -1,0 +1,15 @@
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.API\Controllers\ContractsController.cs(9,36): error CS0246: The type or namespace name 'BaseApiController' could not be found (are you missing a using directive or an assembly reference?) [C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.API\HRM.API.csproj]
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.API\Controllers\ContractsController.cs(19,88): error CS0246: The type or namespace name 'QueryParameters' could not be found (are you missing a using directive or an assembly reference?) [C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.API\HRM.API.csproj]
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.API\Controllers\ContractsController.cs(19,36): error CS0246: The type or namespace name 'PagedResult<>' could not be found (are you missing a using directive or an assembly reference?) [C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.API\HRM.API.csproj]
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.API\Controllers\DisciplineRewardsController.cs(9,44): error CS0246: The type or namespace name 'BaseApiController' could not be found (are you missing a using directive or an assembly reference?) [C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.API\HRM.API.csproj]
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.API\Controllers\TrainingCoursesController.cs(9,42): error CS0246: The type or namespace name 'BaseApiController' could not be found (are you missing a using directive or an assembly reference?) [C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.API\HRM.API.csproj]
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.API\Controllers\DisciplineRewardsController.cs(19,94): error CS0246: The type or namespace name 'QueryParameters' could not be found (are you missing a using directive or an assembly reference?) [C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.API\HRM.API.csproj]
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.API\Controllers\DisciplineRewardsController.cs(19,36): error CS0246: The type or namespace name 'PagedResult<>' could not be found (are you missing a using directive or an assembly reference?) [C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.API\HRM.API.csproj]
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.API\Controllers\TrainingCoursesController.cs(19,92): error CS0246: The type or namespace name 'QueryParameters' could not be found (are you missing a using directive or an assembly reference?) [C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.API\HRM.API.csproj]
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.API\Controllers\TrainingCoursesController.cs(19,36): error CS0246: The type or namespace name 'PagedResult<>' could not be found (are you missing a using directive or an assembly reference?) [C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.API\HRM.API.csproj]
+
+Build FAILED.
+    0 Warning(s)
+    9 Error(s)
+
+Time Elapsed 00:00:02.71

@@ -1,5 +1,20 @@
 namespace HRM.Application.DTOs;
 
+// ==================== DEPARTMENT ====================
+public class DepartmentDto
+{
+    public int Id { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
+}
+
+public class CreateDepartmentDto
+{
+    public string Name { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
+}
+
+
 // ==================== ATTENDANCE ====================
 public class AttendanceRecordDto
 {
@@ -79,6 +94,7 @@ public class JobPostingDto
 {
     public int Id { get; set; }
     public string Title { get; set; } = string.Empty;
+    public int DepartmentId { get; set; }
     public string Department { get; set; } = string.Empty;
     public string Location { get; set; } = string.Empty;
     public string SalaryRange { get; set; } = string.Empty;
@@ -90,7 +106,7 @@ public class JobPostingDto
 public class CreateJobPostingDto
 {
     public string Title { get; set; } = string.Empty;
-    public string Department { get; set; } = string.Empty;
+    public int DepartmentId { get; set; }
     public string Location { get; set; } = string.Empty;
     public string SalaryRange { get; set; } = string.Empty;
 }

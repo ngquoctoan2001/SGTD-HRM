@@ -1,0 +1,7 @@
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\Services\DisciplineRewardService.cs(38,10): error CS1026: ) expected [C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+
+Build FAILED.
+    0 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:01.44

@@ -10,3 +10,15 @@ C:\Users\ADMIN\Downloads\HRM-SGTD\src\HRM.Domain\obj\Debug\net10.0\HRM.Domain.dl
 C:\Users\ADMIN\Downloads\HRM-SGTD\src\HRM.Domain\obj\Debug\net10.0\refint\HRM.Domain.dll
 C:\Users\ADMIN\Downloads\HRM-SGTD\src\HRM.Domain\obj\Debug\net10.0\HRM.Domain.pdb
 C:\Users\ADMIN\Downloads\HRM-SGTD\src\HRM.Domain\obj\Debug\net10.0\ref\HRM.Domain.dll
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Domain\bin\Debug\net10.0\HRM.Domain.deps.json
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Domain\bin\Debug\net10.0\HRM.Domain.dll
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Domain\bin\Debug\net10.0\HRM.Domain.pdb
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Domain\obj\Debug\net10.0\HRM.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Domain\obj\Debug\net10.0\HRM.Domain.AssemblyInfoInputs.cache
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Domain\obj\Debug\net10.0\HRM.Domain.AssemblyInfo.cs
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Domain\obj\Debug\net10.0\HRM.Domain.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Domain\obj\Debug\net10.0\HRM.Domain.sourcelink.json
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Domain\obj\Debug\net10.0\HRM.Domain.dll
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Domain\obj\Debug\net10.0\refint\HRM.Domain.dll
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Domain\obj\Debug\net10.0\HRM.Domain.pdb
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Domain\obj\Debug\net10.0\ref\HRM.Domain.dll

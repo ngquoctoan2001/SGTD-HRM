@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\hrm.api\\HRM.API.csproj": {}
+    "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\hrm.api\\HRM.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\hrm.api\\HRM.API.csproj": {
+    "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\hrm.api\\HRM.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\hrm.api\\HRM.API.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\hrm.api\\HRM.API.csproj",
         "projectName": "HRM.API",
-        "projectPath": "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\hrm.api\\HRM.API.csproj",
+        "projectPath": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\hrm.api\\HRM.API.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\hrm.api\\obj\\",
+        "outputPath": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\hrm.api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,11 +26,11 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.Application\\HRM.Application.csproj": {
-                "projectPath": "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.Application\\HRM.Application.csproj"
+              "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\HRM.Application\\HRM.Application.csproj": {
+                "projectPath": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\HRM.Application\\HRM.Application.csproj"
               },
-              "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.Infrastructure\\HRM.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.Infrastructure\\HRM.Infrastructure.csproj"
+              "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\HRM.Infrastructure\\HRM.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\HRM.Infrastructure\\HRM.Infrastructure.csproj"
               }
             }
           }
@@ -517,14 +517,14 @@
         }
       }
     },
-    "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.Application\\HRM.Application.csproj": {
+    "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\HRM.Application\\HRM.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.Application\\HRM.Application.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\HRM.Application\\HRM.Application.csproj",
         "projectName": "HRM.Application",
-        "projectPath": "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.Application\\HRM.Application.csproj",
+        "projectPath": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\HRM.Application\\HRM.Application.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.Application\\obj\\",
+        "outputPath": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\HRM.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -539,8 +539,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.Domain\\HRM.Domain.csproj": {
-                "projectPath": "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.Domain\\HRM.Domain.csproj"
+              "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\HRM.Domain\\HRM.Domain.csproj": {
+                "projectPath": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\HRM.Domain\\HRM.Domain.csproj"
               }
             }
           }
@@ -892,14 +892,14 @@
         }
       }
     },
-    "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.Domain\\HRM.Domain.csproj": {
+    "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\HRM.Domain\\HRM.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.Domain\\HRM.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\HRM.Domain\\HRM.Domain.csproj",
         "projectName": "HRM.Domain",
-        "projectPath": "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.Domain\\HRM.Domain.csproj",
+        "projectPath": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\HRM.Domain\\HRM.Domain.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.Domain\\obj\\",
+        "outputPath": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\HRM.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -1225,14 +1225,14 @@
         }
       }
     },
-    "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.Infrastructure\\HRM.Infrastructure.csproj": {
+    "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\HRM.Infrastructure\\HRM.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.Infrastructure\\HRM.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\HRM.Infrastructure\\HRM.Infrastructure.csproj",
         "projectName": "HRM.Infrastructure",
-        "projectPath": "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.Infrastructure\\HRM.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\HRM.Infrastructure\\HRM.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\HRM.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -1247,8 +1247,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.Application\\HRM.Application.csproj": {
-                "projectPath": "C:\\Users\\ADMIN\\Downloads\\HRM-SGTD\\src\\HRM.Application\\HRM.Application.csproj"
+              "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\HRM.Application\\HRM.Application.csproj": {
+                "projectPath": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\HRM-SGTD\\src\\HRM.Application\\HRM.Application.csproj"
               }
             }
           }

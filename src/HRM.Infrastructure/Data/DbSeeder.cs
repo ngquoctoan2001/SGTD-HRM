@@ -41,14 +41,28 @@ public static class DbSeeder
 
         context.Users.AddRange(adminUser, normalUser);
 
+        // Seed Departments
+        var departments = new List<Department>
+        {
+            new() { Name = "Board of Directors", Description = "Ban Giám đốc" },
+            new() { Name = "Human Resources", Description = "Phòng Nhân sự" },
+            new() { Name = "Engineering", Description = "Phòng Kỹ thuật & Công nghệ" },
+            new() { Name = "Product", Description = "Phòng Sản phẩm" },
+            new() { Name = "Design", Description = "Phòng Thiết kế" },
+            new() { Name = "Marketing", Description = "Phòng Marketing" },
+            new() { Name = "Sales", Description = "Phòng Kinh doanh" },
+        };
+        context.Departments.AddRange(departments);
+        await context.SaveChangesAsync();
+
         // Seed Employees
         var employees = new List<Employee>
         {
-            new() { Name = "Sarah Jenkins", Title = "Senior Developer", Department = "Engineering", Email = "sarah@company.com", Phone = "0901111111", Status = EmployeeStatus.Active, Avatar = "", JoinDate = new DateTime(2023, 3, 15) },
-            new() { Name = "Michael Ross", Title = "Product Manager", Department = "Product", Email = "michael@company.com", Phone = "0902222222", Status = EmployeeStatus.Active, Avatar = "", JoinDate = new DateTime(2022, 7, 1) },
-            new() { Name = "Elena Rodriguez", Title = "UI/UX Designer", Department = "Design", Email = "elena@company.com", Phone = "0903333333", Status = EmployeeStatus.Active, Avatar = "", JoinDate = new DateTime(2023, 1, 10) },
-            new() { Name = "David Kim", Title = "DevOps Engineer", Department = "Engineering", Email = "david@company.com", Phone = "0904444444", Status = EmployeeStatus.Active, Avatar = "", JoinDate = new DateTime(2023, 6, 20) },
-            new() { Name = "Lisa Chen", Title = "QA Engineer", Department = "Engineering", Email = "lisa@company.com", Phone = "0905555555", Status = EmployeeStatus.Active, Avatar = "", JoinDate = new DateTime(2023, 9, 5) },
+            new() { Name = "Sarah Jenkins", Title = "Senior Developer", DepartmentId = departments[2].Id, Email = "sarah@company.com", Phone = "0901111111", Status = EmployeeStatus.Active, Avatar = "", JoinDate = new DateTime(2023, 3, 15) },
+            new() { Name = "Michael Ross", Title = "Product Manager", DepartmentId = departments[3].Id, Email = "michael@company.com", Phone = "0902222222", Status = EmployeeStatus.Active, Avatar = "", JoinDate = new DateTime(2022, 7, 1) },
+            new() { Name = "Elena Rodriguez", Title = "UI/UX Designer", DepartmentId = departments[4].Id, Email = "elena@company.com", Phone = "0903333333", Status = EmployeeStatus.Active, Avatar = "", JoinDate = new DateTime(2023, 1, 10) },
+            new() { Name = "David Kim", Title = "DevOps Engineer", DepartmentId = departments[2].Id, Email = "david@company.com", Phone = "0904444444", Status = EmployeeStatus.Active, Avatar = "", JoinDate = new DateTime(2023, 6, 20) },
+            new() { Name = "Lisa Chen", Title = "QA Engineer", DepartmentId = departments[2].Id, Email = "lisa@company.com", Phone = "0905555555", Status = EmployeeStatus.Active, Avatar = "", JoinDate = new DateTime(2023, 9, 5) },
         };
         context.Employees.AddRange(employees);
         await context.SaveChangesAsync();
@@ -56,9 +70,9 @@ public static class DbSeeder
         // Seed Job Postings
         var jobPostings = new List<JobPosting>
         {
-            new() { Title = "Senior UI/UX Designer", Department = "Design", Location = "Remote", SalaryRange = "$80,000 - $120,000", Status = JobPostingStatus.Hiring, PostedDate = DateTime.UtcNow.AddDays(-10) },
-            new() { Title = "Frontend Developer", Department = "Engineering", Location = "Hybrid", SalaryRange = "$70,000 - $100,000", Status = JobPostingStatus.Hiring, PostedDate = DateTime.UtcNow.AddDays(-5) },
-            new() { Title = "DevOps Engineer", Department = "Engineering", Location = "On-site", SalaryRange = "$90,000 - $130,000", Status = JobPostingStatus.Hiring, PostedDate = DateTime.UtcNow.AddDays(-3) },
+            new() { Title = "Senior UI/UX Designer", DepartmentId = departments[4].Id, Location = "Remote", SalaryRange = "$80,000 - $120,000", Status = JobPostingStatus.Hiring, PostedDate = DateTime.UtcNow.AddDays(-10) },
+            new() { Title = "Frontend Developer", DepartmentId = departments[2].Id, Location = "Hybrid", SalaryRange = "$70,000 - $100,000", Status = JobPostingStatus.Hiring, PostedDate = DateTime.UtcNow.AddDays(-5) },
+            new() { Title = "DevOps Engineer", DepartmentId = departments[2].Id, Location = "On-site", SalaryRange = "$90,000 - $130,000", Status = JobPostingStatus.Hiring, PostedDate = DateTime.UtcNow.AddDays(-3) },
         };
         context.JobPostings.AddRange(jobPostings);
         await context.SaveChangesAsync();

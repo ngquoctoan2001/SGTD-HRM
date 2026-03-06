@@ -4,11 +4,11 @@ import Topbar from './Topbar';
 
 export default function MainLayout() {
     return (
-        <div className="main-layout">
+        <div className="app-layout">
             <Sidebar />
-            <div className="main-content">
+            <div className="main-wrapper">
                 <Topbar />
-                <div className="page-content">
+                <div className="main-content">
                     <Outlet />
                 </div>
             </div>

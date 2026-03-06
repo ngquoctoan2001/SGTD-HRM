@@ -9,8 +9,13 @@ public class HrmDbContext : DbContext
     public HrmDbContext(DbContextOptions<HrmDbContext> options) : base(options) { }
 
     public DbSet<User> Users => Set<User>();
+    public DbSet<Department> Departments => Set<Department>();
     public DbSet<Employee> Employees => Set<Employee>();
+    public DbSet<Contract> Contracts => Set<Contract>();
     public DbSet<JobPosting> JobPostings => Set<JobPosting>();
+    public DbSet<DisciplineReward> DisciplineRewards => Set<DisciplineReward>();
+    public DbSet<TrainingCourse> TrainingCourses => Set<TrainingCourse>();
+    public DbSet<TrainingParticipant> TrainingParticipants => Set<TrainingParticipant>();
     public DbSet<Candidate> Candidates => Set<Candidate>();
     public DbSet<InterviewSchedule> InterviewSchedules => Set<InterviewSchedule>();
     public DbSet<AttendanceRecord> AttendanceRecords => Set<AttendanceRecord>();
@@ -26,8 +31,15 @@ public class HrmDbContext : DbContext
 
         // Global query filter for soft delete
         modelBuilder.Entity<User>().HasQueryFilter(e => !e.IsDeleted);
+        modelBuilder.Entity<Department>().HasQueryFilter(e => !e.IsDeleted);
         modelBuilder.Entity<Employee>().HasQueryFilter(e => !e.IsDeleted);
+        modelBuilder.Entity<Contract>().HasQueryFilter(e => !e.IsDeleted);
+        modelBuilder.Entity<Employee>().HasQueryFilter(e => !e.IsDeleted);
+        modelBuilder.Entity<Contract>().HasQueryFilter(e => !e.IsDeleted);
         modelBuilder.Entity<JobPosting>().HasQueryFilter(e => !e.IsDeleted);
+        modelBuilder.Entity<DisciplineReward>().HasQueryFilter(e => !e.IsDeleted);
+        modelBuilder.Entity<TrainingCourse>().HasQueryFilter(e => !e.IsDeleted);
+        modelBuilder.Entity<TrainingParticipant>().HasQueryFilter(e => !e.IsDeleted);
         modelBuilder.Entity<Candidate>().HasQueryFilter(e => !e.IsDeleted);
         modelBuilder.Entity<InterviewSchedule>().HasQueryFilter(e => !e.IsDeleted);
         modelBuilder.Entity<AttendanceRecord>().HasQueryFilter(e => !e.IsDeleted);
@@ -52,27 +64,97 @@ public class HrmDbContext : DbContext
             entity.Property(e => e.AvatarUrl).HasMaxLength(500);
         });
 
+        // ==================== DEPARTMENT ====================
+        modelBuilder.Entity<Department>(entity =>
+        {
+            entity.HasIndex(e => e.Name).IsUnique();
+            entity.Property(e => e.Name).HasMaxLength(200).IsRequired();
+            entity.Property(e => e.Description).HasMaxLength(1000);
+        });
+
         // ==================== EMPLOYEE ====================
         modelBuilder.Entity<Employee>(entity =>
         {
             entity.HasIndex(e => e.Email).IsUnique();
             entity.Property(e => e.Name).HasMaxLength(200).IsRequired();
             entity.Property(e => e.Title).HasMaxLength(200).IsRequired();
-            entity.Property(e => e.Department).HasMaxLength(200).IsRequired();
             entity.Property(e => e.Email).HasMaxLength(200).IsRequired();
             entity.Property(e => e.Phone).HasMaxLength(50);
             entity.Property(e => e.Status).HasConversion<string>().HasMaxLength(50);
             entity.Property(e => e.Avatar).HasMaxLength(500);
+
+            entity.HasOne(e => e.Department)
+                  .WithMany(d => d.Employees)
+                  .HasForeignKey(e => e.DepartmentId)
+                  .OnDelete(DeleteBehavior.Restrict);
+        });
+
+        // ==================== CONTRACT ====================
+        modelBuilder.Entity<Contract>(entity =>
+        {
+            entity.HasIndex(e => e.EmployeeId);
+            entity.Property(e => e.ContractType).HasMaxLength(100).IsRequired();
+            entity.Property(e => e.Status).HasMaxLength(50).IsRequired();
+            entity.Property(e => e.BasicSalary).HasPrecision(18, 2);
+            entity.Property(e => e.FileUrl).HasMaxLength(500);
+
+            entity.HasOne(e => e.Employee)
+                  .WithMany(emp => emp.Contracts)
+                  .HasForeignKey(e => e.EmployeeId)
+                  .OnDelete(DeleteBehavior.Cascade);
+        });
+
+        // ==================== DISCIPLINE & REWARD ====================
+        modelBuilder.Entity<DisciplineReward>(entity =>
+        {
+            entity.HasIndex(e => e.EmployeeId);
+            entity.Property(e => e.Type).HasMaxLength(50).IsRequired();
+            entity.Property(e => e.Amount).HasPrecision(18, 2);
+            entity.Property(e => e.Status).HasMaxLength(50).IsRequired();
+
+            entity.HasOne(e => e.Employee)
+                  .WithMany()
+                  .HasForeignKey(e => e.EmployeeId)
+                  .OnDelete(DeleteBehavior.Cascade);
+        });
+
+        // ==================== TRAINING COURSE ====================
+        modelBuilder.Entity<TrainingCourse>(entity =>
+        {
+            entity.Property(e => e.CourseName).HasMaxLength(200).IsRequired();
+            entity.Property(e => e.Instructor).HasMaxLength(200);
+            entity.Property(e => e.Status).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<TrainingParticipant>(entity =>
+        {
+            entity.HasIndex(e => e.TrainingCourseId);
+            entity.HasIndex(e => e.EmployeeId);
+            entity.Property(e => e.Status).HasMaxLength(50);
+
+            entity.HasOne(e => e.TrainingCourse)
+                  .WithMany(tc => tc.Participants)
+                  .HasForeignKey(e => e.TrainingCourseId)
+                  .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasOne(e => e.Employee)
+                  .WithMany()
+                  .HasForeignKey(e => e.EmployeeId)
+                  .OnDelete(DeleteBehavior.Cascade);
         });
 
         // ==================== JOB POSTING ====================
         modelBuilder.Entity<JobPosting>(entity =>
         {
             entity.Property(e => e.Title).HasMaxLength(200).IsRequired();
-            entity.Property(e => e.Department).HasMaxLength(200).IsRequired();
             entity.Property(e => e.Location).HasMaxLength(200);
             entity.Property(e => e.SalaryRange).HasMaxLength(200);
             entity.Property(e => e.Status).HasConversion<string>().HasMaxLength(50);
+
+            entity.HasOne(e => e.Department)
+                  .WithMany(d => d.JobPostings)
+                  .HasForeignKey(e => e.DepartmentId)
+                  .OnDelete(DeleteBehavior.Restrict);
         });
 
         // ==================== CANDIDATE ====================

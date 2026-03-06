@@ -25,9 +25,17 @@ public class EmployeeService : IEmployeeService
 
     public async Task<ApiResponse<PagedResult<EmployeeDto>>> GetAllAsync(QueryParameters p)
     {
+        EmployeeStatus? statusFilter = null;
+        if (!string.IsNullOrEmpty(p.Status) && Enum.TryParse<EmployeeStatus>(p.Status, out var parsedStatus))
+            statusFilter = parsedStatus;
+
         var (items, total) = await _repo.GetPagedAsync(
             p.PageNumber, p.PageSize,
-            filter: string.IsNullOrEmpty(p.Search) ? null : e => e.Name.Contains(p.Search) || e.Department.Contains(p.Search));
+            filter: e => (string.IsNullOrEmpty(p.Search) || e.Name.Contains(p.Search) || e.Department.Name.Contains(p.Search)) &&
+                         (!p.DepartmentId.HasValue || e.DepartmentId == p.DepartmentId.Value) &&
+                         (!statusFilter.HasValue || e.Status == statusFilter.Value),
+            null,
+            e => e.Department);
 
         var dtos = _mapper.Map<IEnumerable<EmployeeDto>>(items);
         var result = new PagedResult<EmployeeDto> { Items = dtos, TotalCount = total, PageNumber = p.PageNumber, PageSize = p.PageSize };
@@ -36,7 +44,8 @@ public class EmployeeService : IEmployeeService
 
     public async Task<ApiResponse<EmployeeDto>> GetByIdAsync(int id)
     {
-        var entity = await _repo.GetByIdAsync(id);
+        var entities = await _repo.FindAsync(e => e.Id == id, e => e.Department);
+        var entity = entities.FirstOrDefault();
         if (entity == null) return ApiResponse<EmployeeDto>.Fail("Employee not found");
         return ApiResponse<EmployeeDto>.Ok(_mapper.Map<EmployeeDto>(entity));
     }
@@ -56,7 +65,7 @@ public class EmployeeService : IEmployeeService
 
         entity.Name = dto.Name;
         entity.Title = dto.Title;
-        entity.Department = dto.Department;
+        entity.DepartmentId = dto.DepartmentId;
         entity.Email = dto.Email;
         entity.Phone = dto.Phone;
         entity.Avatar = dto.Avatar;
@@ -91,7 +100,8 @@ public class AttendanceService : IAttendanceService
     public async Task<ApiResponse<PagedResult<AttendanceRecordDto>>> GetAllAsync(QueryParameters p)
     {
         var (items, total) = await _repo.GetPagedAsync(p.PageNumber, p.PageSize,
-            null, null, a => a.Employee);
+            filter: a => !p.EmployeeId.HasValue || a.EmployeeId == p.EmployeeId.Value, 
+            null, a => a.Employee);
         var dtos = _mapper.Map<IEnumerable<AttendanceRecordDto>>(items);
         return ApiResponse<PagedResult<AttendanceRecordDto>>.Ok(new PagedResult<AttendanceRecordDto> { Items = dtos, TotalCount = total, PageNumber = p.PageNumber, PageSize = p.PageSize });
     }
@@ -141,7 +151,8 @@ public class LeaveService : ILeaveService
     public async Task<ApiResponse<PagedResult<LeaveRequestDto>>> GetAllAsync(QueryParameters p)
     {
         var (items, total) = await _repo.GetPagedAsync(p.PageNumber, p.PageSize,
-            null, null, l => l.Employee);
+            filter: l => !p.EmployeeId.HasValue || l.EmployeeId == p.EmployeeId.Value, 
+            null, l => l.Employee);
         return ApiResponse<PagedResult<LeaveRequestDto>>.Ok(new PagedResult<LeaveRequestDto> { Items = _mapper.Map<IEnumerable<LeaveRequestDto>>(items), TotalCount = total, PageNumber = p.PageNumber, PageSize = p.PageSize });
     }
 
@@ -200,7 +211,8 @@ public class PayrollService : IPayrollService
     public async Task<ApiResponse<PagedResult<PayrollSlipDto>>> GetAllAsync(QueryParameters p)
     {
         var (items, total) = await _repo.GetPagedAsync(p.PageNumber, p.PageSize,
-            null, null, p2 => p2.Employee);
+            filter: p2 => !p.EmployeeId.HasValue || p2.EmployeeId == p.EmployeeId.Value, 
+            null, p2 => p2.Employee);
         return ApiResponse<PagedResult<PayrollSlipDto>>.Ok(new PagedResult<PayrollSlipDto> { Items = _mapper.Map<IEnumerable<PayrollSlipDto>>(items), TotalCount = total, PageNumber = p.PageNumber, PageSize = p.PageSize });
     }
 
@@ -248,14 +260,23 @@ public class JobPostingService : IJobPostingService
 
     public async Task<ApiResponse<PagedResult<JobPostingDto>>> GetAllAsync(QueryParameters p)
     {
+        JobPostingStatus? statusFilter = null;
+        if (!string.IsNullOrEmpty(p.Status) && Enum.TryParse<JobPostingStatus>(p.Status, out var parsedStatus))
+            statusFilter = parsedStatus;
+
         var (items, total) = await _repo.GetPagedAsync(p.PageNumber, p.PageSize,
-            null, null, j => j.Candidates);
+            filter: j => (string.IsNullOrEmpty(p.Search) || j.Title.Contains(p.Search) || j.Department.Name.Contains(p.Search)) &&
+                         (!p.DepartmentId.HasValue || j.DepartmentId == p.DepartmentId.Value) &&
+                         (!statusFilter.HasValue || j.Status == statusFilter.Value),
+            null, 
+            j => j.Candidates, j => j.Department);
         return ApiResponse<PagedResult<JobPostingDto>>.Ok(new PagedResult<JobPostingDto> { Items = _mapper.Map<IEnumerable<JobPostingDto>>(items), TotalCount = total, PageNumber = p.PageNumber, PageSize = p.PageSize });
     }
 
     public async Task<ApiResponse<JobPostingDto>> GetByIdAsync(int id)
     {
-        var e = await _repo.GetByIdAsync(id);
+        var entities = await _repo.FindAsync(j => j.Id == id, j => j.Department);
+        var e = entities.FirstOrDefault();
         return e == null ? ApiResponse<JobPostingDto>.Fail("Not found") : ApiResponse<JobPostingDto>.Ok(_mapper.Map<JobPostingDto>(e));
     }
 
@@ -265,6 +286,58 @@ public class JobPostingService : IJobPostingService
         await _repo.AddAsync(entity);
         await _uow.SaveChangesAsync();
         return ApiResponse<JobPostingDto>.Ok(_mapper.Map<JobPostingDto>(entity), "Created");
+    }
+
+    public async Task<ApiResponse<bool>> DeleteAsync(int id)
+    {
+        var e = await _repo.GetByIdAsync(id);
+        if (e == null) return ApiResponse<bool>.Fail("Not found");
+        _repo.SoftDelete(e);
+        await _uow.SaveChangesAsync();
+        return ApiResponse<bool>.Ok(true, "Deleted");
+    }
+}
+
+// ==================== DEPARTMENT SERVICE ====================
+public class DepartmentService : IDepartmentService
+{
+    private readonly IRepository<Department> _repo;
+    private readonly IUnitOfWork _uow;
+    private readonly IMapper _mapper;
+
+    public DepartmentService(IRepository<Department> repo, IUnitOfWork uow, IMapper mapper)
+    { _repo = repo; _uow = uow; _mapper = mapper; }
+
+    public async Task<ApiResponse<PagedResult<DepartmentDto>>> GetAllAsync(QueryParameters p)
+    {
+        var (items, total) = await _repo.GetPagedAsync(p.PageNumber, p.PageSize,
+            filter: string.IsNullOrEmpty(p.Search) ? null : d => d.Name.Contains(p.Search));
+        return ApiResponse<PagedResult<DepartmentDto>>.Ok(new PagedResult<DepartmentDto> { Items = _mapper.Map<IEnumerable<DepartmentDto>>(items), TotalCount = total, PageNumber = p.PageNumber, PageSize = p.PageSize });
+    }
+
+    public async Task<ApiResponse<DepartmentDto>> GetByIdAsync(int id)
+    {
+        var e = await _repo.GetByIdAsync(id);
+        return e == null ? ApiResponse<DepartmentDto>.Fail("Not found") : ApiResponse<DepartmentDto>.Ok(_mapper.Map<DepartmentDto>(e));
+    }
+
+    public async Task<ApiResponse<DepartmentDto>> CreateAsync(CreateDepartmentDto dto)
+    {
+        var entity = _mapper.Map<Department>(dto);
+        await _repo.AddAsync(entity);
+        await _uow.SaveChangesAsync();
+        return ApiResponse<DepartmentDto>.Ok(_mapper.Map<DepartmentDto>(entity), "Created");
+    }
+
+    public async Task<ApiResponse<DepartmentDto>> UpdateAsync(int id, CreateDepartmentDto dto)
+    {
+        var entity = await _repo.GetByIdAsync(id);
+        if (entity == null) return ApiResponse<DepartmentDto>.Fail("Not found");
+        entity.Name = dto.Name;
+        entity.Description = dto.Description;
+        _repo.Update(entity);
+        await _uow.SaveChangesAsync();
+        return ApiResponse<DepartmentDto>.Ok(_mapper.Map<DepartmentDto>(entity), "Updated");
     }
 
     public async Task<ApiResponse<bool>> DeleteAsync(int id)
@@ -380,7 +453,8 @@ public class PerformanceService : IPerformanceService
     public async Task<ApiResponse<PagedResult<PerformanceReviewDto>>> GetAllAsync(QueryParameters p)
     {
         var (items, total) = await _repo.GetPagedAsync(p.PageNumber, p.PageSize,
-            null, null, pr => pr.Employee);
+            filter: pr => !p.EmployeeId.HasValue || pr.EmployeeId == p.EmployeeId.Value, 
+            null, pr => pr.Employee);
         return ApiResponse<PagedResult<PerformanceReviewDto>>.Ok(new PagedResult<PerformanceReviewDto> { Items = _mapper.Map<IEnumerable<PerformanceReviewDto>>(items), TotalCount = total, PageNumber = p.PageNumber, PageSize = p.PageSize });
     }
 

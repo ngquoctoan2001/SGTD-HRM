@@ -9,6 +9,7 @@ using HRM.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.FileProviders;
 using Scalar.AspNetCore;
 using Serilog;
 
@@ -42,6 +43,12 @@ builder.Services.AddScoped<IInterviewService, InterviewService>();
 builder.Services.AddScoped<IPerformanceService, PerformanceService>();
 builder.Services.AddScoped<IAssetService, AssetService>();
 builder.Services.AddScoped<IAssetAssignmentService, AssetAssignmentService>();
+builder.Services.AddScoped<IReportsService, ReportsService>();
+builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IContractService, ContractService>();
+builder.Services.AddScoped<IDisciplineRewardService, DisciplineRewardService>();
+builder.Services.AddScoped<ITrainingCourseService, TrainingCourseService>();
 
 // ==================== AUTOMAPPER ====================
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
@@ -95,6 +102,15 @@ app.MapScalarApiReference(options =>
     options.Title = "HRM System API";
     options.Theme = ScalarTheme.BluePlanet;
     options.DefaultHttpClient = new(ScalarTarget.CSharp, ScalarClient.HttpClient);
+});
+
+// Configure Static Files for Uploads directory
+var uploadsPath = Path.Combine(app.Environment.ContentRootPath, "Uploads");
+if (!Directory.Exists(uploadsPath)) Directory.CreateDirectory(uploadsPath);
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(uploadsPath),
+    RequestPath = "/uploads"
 });
 
 app.UseCors("AllowFrontend");

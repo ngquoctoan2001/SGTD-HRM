@@ -14,13 +14,34 @@ public class MappingProfile : Profile
         // User
         CreateMap<User, UserInfoDto>()
             .ForMember(d => d.Role, o => o.MapFrom(s => s.Role.ToString()));
+        CreateMap<User, UserDto>()
+            .ForMember(d => d.Role, o => o.MapFrom(s => s.Role.ToString()));
+
+        // Department
+        CreateMap<Department, DepartmentDto>();
+        CreateMap<CreateDepartmentDto, Department>();
 
         // Employee
         CreateMap<Domain.Entities.Employee, EmployeeDto>()
+            .ForMember(d => d.Department, o => o.MapFrom(s => s.Department.Name))
             .ForMember(d => d.Status, o => o.MapFrom(s => s.Status.ToString()));
         CreateMap<CreateEmployeeDto, Domain.Entities.Employee>();
         CreateMap<UpdateEmployeeDto, Domain.Entities.Employee>()
             .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+
+        // Contract
+        CreateMap<Contract, ContractDto>()
+            .ForMember(d => d.EmployeeName, o => o.MapFrom(s => s.Employee != null ? s.Employee.Name : ""));
+        CreateMap<CreateContractDto, Contract>();
+
+        // DisciplineReward
+        CreateMap<DisciplineReward, DisciplineRewardDto>()
+            .ForMember(d => d.EmployeeName, o => o.MapFrom(s => s.Employee != null ? s.Employee.Name : ""));
+        CreateMap<CreateDisciplineRewardDto, DisciplineReward>();
+
+        // TrainingCourse
+        CreateMap<TrainingCourse, TrainingCourseDto>();
+        CreateMap<CreateTrainingCourseDto, TrainingCourse>();
 
         // Attendance
         CreateMap<AttendanceRecord, AttendanceRecordDto>()
@@ -56,6 +77,7 @@ public class MappingProfile : Profile
 
         // Job Posting
         CreateMap<JobPosting, JobPostingDto>()
+            .ForMember(d => d.Department, o => o.MapFrom(s => s.Department.Name))
             .ForMember(d => d.Status, o => o.MapFrom(s => s.Status.ToString()))
             .ForMember(d => d.CandidateCount, o => o.MapFrom(s => s.Candidates.Count));
         CreateMap<CreateJobPostingDto, JobPosting>();

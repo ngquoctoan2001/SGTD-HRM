@@ -34,3 +34,33 @@ System.IO.IOException: Failed to bind to address http://127.0.0.1:5000: address 
    at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
    at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
    at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2026-03-04 15:15:54.457 +07:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2026-03-04 15:15:54.654 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Users" AS "u"
+    WHERE NOT ("u"."IsDeleted"))
+2026-03-04 15:15:54.663 +07:00 [INF] HRM API started at http://localhost:5000
+2026-03-04 15:15:54.665 +07:00 [INF] API Docs available at: http://localhost:5000/scalar/v1
+2026-03-04 15:15:54.675 +07:00 [INF] User profile is available. Using 'C:\Users\ADMIN\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-03-04 15:15:54.721 +07:00 [WRN] Overriding address(es) 'http://localhost:5081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-04 15:15:54.727 +07:00 [INF] Now listening on: http://localhost:5000
+2026-03-04 15:15:54.729 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-04 15:15:54.730 +07:00 [INF] Hosting environment: Development
+2026-03-04 15:15:54.731 +07:00 [INF] Content root path: C:\Users\ADMIN\Downloads\HRM-SGTD\src\HRM.API
+2026-03-04 15:29:48.747 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2026-03-04 15:29:48.945 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Users" AS "u"
+    WHERE NOT ("u"."IsDeleted"))
+2026-03-04 15:29:48.954 +07:00 [INF] HRM API started at http://localhost:5000
+2026-03-04 15:29:48.956 +07:00 [INF] API Docs available at: http://localhost:5000/scalar/v1
+2026-03-04 15:29:48.967 +07:00 [INF] User profile is available. Using 'C:\Users\ADMIN\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-03-04 15:29:49.019 +07:00 [WRN] Overriding address(es) 'http://localhost:5081'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2026-03-04 15:29:49.025 +07:00 [INF] Now listening on: http://localhost:5000
+2026-03-04 15:29:49.026 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-04 15:29:49.027 +07:00 [INF] Hosting environment: Development
+2026-03-04 15:29:49.027 +07:00 [INF] Content root path: C:\Users\ADMIN\Downloads\HRM-SGTD\src\HRM.API

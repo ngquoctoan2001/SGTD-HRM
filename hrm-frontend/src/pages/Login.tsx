@@ -22,60 +22,66 @@ export default function Login() {
                 login(res.data.data.token, res.data.data.user);
                 navigate('/dashboard');
             } else {
-                setError(res.data.message || 'Login failed');
+                setError(res.data.message || 'Đăng nhập thất bại');
             }
         } catch (err: any) {
-            setError(err.response?.data?.message || 'Network error');
+            setError(err.response?.data?.message || 'Lỗi kết nối mạng');
         } finally {
             setLoading(false);
         }
     };
 
     return (
-        <div className="login-page">
-            <div className="login-card">
-                <div style={{ textAlign: 'center', marginBottom: 24 }}>
+        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--surface-container)' }}>
+            <div className="card fade-in" style={{ width: '420px', padding: '48px 40px', boxShadow: 'var(--shadow-lg)' }}>
+                <div style={{ textAlign: 'center', marginBottom: '32px' }}>
                     <div style={{
-                        width: 56, height: 56, background: '#4361ee', borderRadius: 14,
+                        width: '56px', height: '56px', background: 'var(--primary-light)', borderRadius: '16px',
                         display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                        fontSize: 28, marginBottom: 16
-                    }}>📋</div>
-                    <h1>HRM System</h1>
-                    <p>Sign in to your account to continue</p>
+                        fontSize: '28px', marginBottom: '16px', color: 'var(--primary)'
+                    }}>👋</div>
+                    <h1 style={{ fontSize: '24px', fontWeight: '800', color: 'var(--text-primary)', marginBottom: '8px' }}>HRM Pro</h1>
+                    <p style={{ fontSize: '14px', color: 'var(--text-secondary)' }}>Chào mừng bạn quay trở lại hệ thống</p>
                 </div>
 
-                {error && <div className="login-error">{error}</div>}
+                {error && (
+                    <div style={{ background: 'var(--danger-bg)', color: 'var(--danger)', padding: '12px 16px', borderRadius: 'var(--radius-xs)', fontSize: '14px', marginBottom: '20px' }}>
+                        {error}
+                    </div>
+                )}
 
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
-                        <label>Username</label>
+                        <label>Tên đăng nhập</label>
                         <input
                             type="text"
+                            className="form-control"
                             value={username}
                             onChange={e => setUsername(e.target.value)}
-                            placeholder="Enter your username"
+                            placeholder="Nhập tên đăng nhập"
                             required
                         />
                     </div>
 
                     <div className="form-group">
-                        <label>Password</label>
+                        <label>Mật khẩu</label>
                         <input
                             type="password"
+                            className="form-control"
                             value={password}
                             onChange={e => setPassword(e.target.value)}
-                            placeholder="Enter your password"
+                            placeholder="Nhập mật khẩu"
                             required
                         />
                     </div>
 
-                    <button type="submit" className="btn btn-primary" disabled={loading}>
-                        {loading ? 'Signing in...' : 'Sign In'}
+                    <button type="submit" className="btn btn-primary" disabled={loading} style={{ width: '100%', marginTop: '8px', padding: '12px' }}>
+                        {loading ? 'Đang xác thực...' : 'Đăng nhập ngay'}
                     </button>
                 </form>
 
-                <p style={{ textAlign: 'center', marginTop: 20, fontSize: 13, color: '#94a3b8' }}>
-                    Demo: admin / Admin@123
+                <p style={{ textAlign: 'center', marginTop: '24px', fontSize: '13px', color: 'var(--text-tertiary)' }}>
+                    Tài khoản demo: hrm_admin / Admin@123
                 </p>
             </div>
         </div>

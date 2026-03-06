@@ -4,6 +4,7 @@ using HRM.Application.DTOs.Employee;
 using HRM.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace HRM.API.Controllers;
 
@@ -55,7 +56,14 @@ public class AttendanceController : ControllerBase
     public AttendanceController(IAttendanceService service) => _service = service;
 
     [HttpGet]
-    public async Task<IActionResult> GetAll([FromQuery] QueryParameters p) => Ok(await _service.GetAllAsync(p));
+    public async Task<IActionResult> GetAll([FromQuery] QueryParameters p)
+    {
+        if (User.IsInRole("Employee"))
+        {
+            p.EmployeeId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+        }
+        return Ok(await _service.GetAllAsync(p));
+    }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
@@ -85,7 +93,14 @@ public class LeaveController : ControllerBase
     public LeaveController(ILeaveService service) => _service = service;
 
     [HttpGet]
-    public async Task<IActionResult> GetAll([FromQuery] QueryParameters p) => Ok(await _service.GetAllAsync(p));
+    public async Task<IActionResult> GetAll([FromQuery] QueryParameters p)
+    {
+        if (User.IsInRole("Employee"))
+        {
+            p.EmployeeId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+        }
+        return Ok(await _service.GetAllAsync(p));
+    }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
@@ -123,7 +138,14 @@ public class PayrollController : ControllerBase
     public PayrollController(IPayrollService service) => _service = service;
 
     [HttpGet]
-    public async Task<IActionResult> GetAll([FromQuery] QueryParameters p) => Ok(await _service.GetAllAsync(p));
+    public async Task<IActionResult> GetAll([FromQuery] QueryParameters p)
+    {
+        if (User.IsInRole("Employee"))
+        {
+            p.EmployeeId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+        }
+        return Ok(await _service.GetAllAsync(p));
+    }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
@@ -247,7 +269,14 @@ public class PerformanceController : ControllerBase
     public PerformanceController(IPerformanceService service) => _service = service;
 
     [HttpGet]
-    public async Task<IActionResult> GetAll([FromQuery] QueryParameters p) => Ok(await _service.GetAllAsync(p));
+    public async Task<IActionResult> GetAll([FromQuery] QueryParameters p)
+    {
+        if (User.IsInRole("Employee"))
+        {
+            p.EmployeeId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+        }
+        return Ok(await _service.GetAllAsync(p));
+    }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
