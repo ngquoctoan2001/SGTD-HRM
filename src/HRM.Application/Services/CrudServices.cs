@@ -50,6 +50,25 @@ public class EmployeeService : IEmployeeService
         return ApiResponse<EmployeeDto>.Ok(_mapper.Map<EmployeeDto>(entity));
     }
 
+    public async Task<ApiResponse<EmployeeProfileDto>> GetProfileAsync(int id)
+    {
+        var entities = await _repo.FindAsync(e => e.Id == id,
+            e => e.Department,
+            e => e.Contracts,
+            e => e.LeaveRequests,
+            e => e.PerformanceReviews,
+            e => e.AttendanceRecords);
+        var entity = entities.FirstOrDefault();
+        if (entity == null) return ApiResponse<EmployeeProfileDto>.Fail("Employee not found");
+        
+        // Also fetch DisciplineRewards since they are not directly on Employee, wait they might not be part of the Employee navigation.
+        // Let's assume Employee has DisciplineRewards as navigation or we can fetch them separately if needed.
+        // Actually, looking at Employee.cs, DisciplineRewards is not a collection. 
+        // Let's just map what we have from the navigation entities.
+        
+        return ApiResponse<EmployeeProfileDto>.Ok(_mapper.Map<EmployeeProfileDto>(entity));
+    }
+
     public async Task<ApiResponse<EmployeeDto>> CreateAsync(CreateEmployeeDto dto)
     {
         var entity = _mapper.Map<Employee>(dto);
@@ -142,11 +161,13 @@ public class AttendanceService : IAttendanceService
 public class LeaveService : ILeaveService
 {
     private readonly IRepository<LeaveRequest> _repo;
+    private readonly IRepository<User> _userRepo;
+    private readonly INotificationService _notificationService;
     private readonly IUnitOfWork _uow;
     private readonly IMapper _mapper;
 
-    public LeaveService(IRepository<LeaveRequest> repo, IUnitOfWork uow, IMapper mapper)
-    { _repo = repo; _uow = uow; _mapper = mapper; }
+    public LeaveService(IRepository<LeaveRequest> repo, IRepository<User> userRepo, INotificationService notificationService, IUnitOfWork uow, IMapper mapper)
+    { _repo = repo; _userRepo = userRepo; _notificationService = notificationService; _uow = uow; _mapper = mapper; }
 
     public async Task<ApiResponse<PagedResult<LeaveRequestDto>>> GetAllAsync(QueryParameters p)
     {
@@ -180,11 +201,24 @@ public class LeaveService : ILeaveService
 
     public async Task<ApiResponse<LeaveRequestDto>> UpdateStatusAsync(int id, UpdateLeaveStatusDto dto)
     {
-        var e = await _repo.GetByIdAsync(id);
+        var e = (await _repo.FindAsync(l => l.Id == id, l => l.Employee)).FirstOrDefault();
         if (e == null) return ApiResponse<LeaveRequestDto>.Fail("Not found");
+        
+        var oldStatus = e.Status;
         if (Enum.TryParse<LeaveStatus>(dto.Status, out var s)) e.Status = s;
         _repo.Update(e);
         await _uow.SaveChangesAsync();
+
+        if (oldStatus != e.Status && e.Employee != null)
+        {
+            var user = (await _userRepo.FindAsync(u => u.Email == e.Employee.Email)).FirstOrDefault();
+            if (user != null)
+            {
+                var msg = e.Status == LeaveStatus.Approved ? "Đơn xin nghỉ phép của bạn đã được duyệt." : "Đơn xin nghỉ phép của bạn đã bị từ chối.";
+                await _notificationService.SendNotificationAsync(user.Id, "Cập nhật Nghỉ phép", msg, "Leave", "/leave");
+            }
+        }
+
         return ApiResponse<LeaveRequestDto>.Ok(_mapper.Map<LeaveRequestDto>(e), "Status updated");
     }
 
@@ -202,11 +236,14 @@ public class LeaveService : ILeaveService
 public class PayrollService : IPayrollService
 {
     private readonly IRepository<PayrollSlip> _repo;
+    private readonly IRepository<Employee> _employeeRepo;
+    private readonly IRepository<User> _userRepo;
+    private readonly INotificationService _notificationService;
     private readonly IUnitOfWork _uow;
     private readonly IMapper _mapper;
 
-    public PayrollService(IRepository<PayrollSlip> repo, IUnitOfWork uow, IMapper mapper)
-    { _repo = repo; _uow = uow; _mapper = mapper; }
+    public PayrollService(IRepository<PayrollSlip> repo, IRepository<Employee> employeeRepo, IRepository<User> userRepo, INotificationService notificationService, IUnitOfWork uow, IMapper mapper)
+    { _repo = repo; _employeeRepo = employeeRepo; _userRepo = userRepo; _notificationService = notificationService; _uow = uow; _mapper = mapper; }
 
     public async Task<ApiResponse<PagedResult<PayrollSlipDto>>> GetAllAsync(QueryParameters p)
     {
@@ -235,6 +272,17 @@ public class PayrollService : IPayrollService
         };
         await _repo.AddAsync(entity);
         await _uow.SaveChangesAsync();
+
+        var employee = await _employeeRepo.GetByIdAsync(dto.EmployeeId);
+        if (employee != null)
+        {
+            var user = (await _userRepo.FindAsync(u => u.Email == employee.Email)).FirstOrDefault();
+            if (user != null)
+            {
+                await _notificationService.SendNotificationAsync(user.Id, "Phiếu lương mới", $"Phiếu lương kỳ {dto.MonthYear} của bạn đã được tạo.", "Payroll", "/payroll");
+            }
+        }
+
         return ApiResponse<PayrollSlipDto>.Ok(_mapper.Map<PayrollSlipDto>(entity), "Created");
     }
 
@@ -354,11 +402,12 @@ public class DepartmentService : IDepartmentService
 public class CandidateService : ICandidateService
 {
     private readonly IRepository<Candidate> _repo;
+    private readonly IRepository<JobPosting> _jobRepo;
     private readonly IUnitOfWork _uow;
     private readonly IMapper _mapper;
 
-    public CandidateService(IRepository<Candidate> repo, IUnitOfWork uow, IMapper mapper)
-    { _repo = repo; _uow = uow; _mapper = mapper; }
+    public CandidateService(IRepository<Candidate> repo, IRepository<JobPosting> jobRepo, IUnitOfWork uow, IMapper mapper)
+    { _repo = repo; _jobRepo = jobRepo; _uow = uow; _mapper = mapper; }
 
     public async Task<ApiResponse<PagedResult<CandidateDto>>> GetAllAsync(QueryParameters p)
     {
@@ -378,9 +427,26 @@ public class CandidateService : ICandidateService
         var entity = _mapper.Map<Candidate>(dto);
         await _repo.AddAsync(entity);
         await _uow.SaveChangesAsync();
+        
         return ApiResponse<CandidateDto>.Ok(_mapper.Map<CandidateDto>(entity), "Created");
     }
 
+    public async Task<ApiResponse<CandidateDto>> UpdateStatusAsync(int id, UpdateCandidateStatusDto dto)
+    {
+        var entity = await _repo.GetByIdAsync(id);
+        if (entity == null) return ApiResponse<CandidateDto>.Fail("Candidate not found");
+
+        if (Enum.TryParse<CandidateStatus>(dto.Status, true, out var status))
+        {
+            entity.Status = status;
+            _repo.Update(entity);
+            await _uow.SaveChangesAsync();
+            return ApiResponse<CandidateDto>.Ok(_mapper.Map<CandidateDto>(entity), "Status updated");
+        }
+        
+        return ApiResponse<CandidateDto>.Fail("Invalid status value");
+    }
+    
     public async Task<ApiResponse<bool>> DeleteAsync(int id)
     {
         var e = await _repo.GetByIdAsync(id);

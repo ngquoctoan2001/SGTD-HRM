@@ -35,3 +35,12 @@ public class UpdateEmployeeDto
     public string Status { get; set; } = string.Empty;
     public string Avatar { get; set; } = string.Empty;
 }
+
+public class EmployeeProfileDto : EmployeeDto
+{
+    public List<ContractDto> Contracts { get; set; } = new();
+    public List<DisciplineRewardDto> DisciplineRewards { get; set; } = new();
+    public List<LeaveRequestDto> LeaveRequests { get; set; } = new();
+    public List<AttendanceRecordDto> AttendanceRecords { get; set; } = new();
+    public List<PerformanceReviewDto> PerformanceReviews { get; set; } = new();
+}

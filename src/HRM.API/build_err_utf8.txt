@@ -1,0 +1,20 @@
+﻿  Determining projects to restore...
+  All projects are up-to-date for restore.
+  HRM.Domain -> C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Domain\bin\Debug\net10.0\HRM.Domain.dll
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\ContractService.cs(38,30): warning CS8603: Possible null reference return. [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\CrudServices.cs(434,21): error CS1061: 'JobPosting' does not contain a definition for 'CandidateCount' and no accessible extension method 'CandidateCount' accepting a first argument of type 'JobPosting' could be found (are you missing a using directive or an assembly reference?) [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\ContractService.cs(53,82): warning CS8603: Possible null reference return. [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\DisciplineRewardService.cs(38,30): warning CS8603: Possible null reference return. [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\DisciplineRewardService.cs(53,74): warning CS8603: Possible null reference return. [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+
+Build FAILED.
+
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\ContractService.cs(38,30): warning CS8603: Possible null reference return. [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\ContractService.cs(53,82): warning CS8603: Possible null reference return. [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\DisciplineRewardService.cs(38,30): warning CS8603: Possible null reference return. [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\DisciplineRewardService.cs(53,74): warning CS8603: Possible null reference return. [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\CrudServices.cs(434,21): error CS1061: 'JobPosting' does not contain a definition for 'CandidateCount' and no accessible extension method 'CandidateCount' accepting a first argument of type 'JobPosting' could be found (are you missing a using directive or an assembly reference?) [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+    4 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:01.41

@@ -4,6 +4,7 @@ import {
     BellIcon,
     Cog6ToothIcon,
 } from '@heroicons/react/24/outline';
+import NotificationBell from '../components/NotificationBell';
 
 const pageTitles: Record<string, string> = {
     '/dashboard': 'Bảng điều khiển',
@@ -18,6 +19,7 @@ const pageTitles: Record<string, string> = {
     '/accounts': 'Hệ thống Tài khoản',
     '/reports': 'Báo cáo & Thống kê',
     '/profile': 'Hồ sơ Cá nhân',
+    '/settings': 'Cài đặt Hệ thống',
 };
 
 export default function Topbar() {
@@ -32,9 +34,7 @@ export default function Topbar() {
             </div>
 
             <div className="topbar-right">
-                <div className="topbar-icon" style={{ background: 'var(--surface-container)' }}>
-                    <BellIcon />
-                </div>
+                <NotificationBell />
                 <div className="topbar-icon" style={{ background: 'var(--surface-container)' }}>
                     <Cog6ToothIcon />
                 </div>

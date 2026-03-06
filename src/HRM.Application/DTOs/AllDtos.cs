@@ -132,6 +132,11 @@ public class CreateCandidateDto
     public int JobPostingId { get; set; }
 }
 
+public class UpdateCandidateStatusDto
+{
+    public string Status { get; set; } = string.Empty;
+}
+
 // ==================== INTERVIEW SCHEDULE ====================
 public class InterviewScheduleDto
 {

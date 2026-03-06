@@ -1,0 +1,21 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  HRM.Domain -> C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Domain\bin\Debug\net10.0\HRM.Domain.dll
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\Services\ContractService.cs(38,30): warning CS8603: Possible null reference return. [C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\Services\ContractService.cs(53,82): warning CS8603: Possible null reference return. [C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\Services\DisciplineRewardService.cs(38,30): warning CS8603: Possible null reference return. [C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\Services\DisciplineRewardService.cs(53,74): warning CS8603: Possible null reference return. [C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+  HRM.Application -> C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\bin\Debug\net10.0\HRM.Application.dll
+  HRM.Infrastructure -> C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Infrastructure\bin\Debug\net10.0\HRM.Infrastructure.dll
+  HRM.API -> C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.API\bin\Debug\net10.0\HRM.API.dll
+
+Build succeeded.
+
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\Services\ContractService.cs(38,30): warning CS8603: Possible null reference return. [C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\Services\ContractService.cs(53,82): warning CS8603: Possible null reference return. [C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\Services\DisciplineRewardService.cs(38,30): warning CS8603: Possible null reference return. [C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\Services\DisciplineRewardService.cs(53,74): warning CS8603: Possible null reference return. [C:\Users\ADMIN\OneDrive\Máy tính\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+    4 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:03.05

@@ -1,4 +1,5 @@
 using System.Text;
+using HRM.API.Hubs;
 using HRM.API.Middleware;
 using HRM.Application.Interfaces;
 using HRM.Application.Mapping;
@@ -49,9 +50,13 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IContractService, ContractService>();
 builder.Services.AddScoped<IDisciplineRewardService, DisciplineRewardService>();
 builder.Services.AddScoped<ITrainingCourseService, TrainingCourseService>();
+builder.Services.AddScoped<INotificationService, HRM.API.Services.NotificationService>();
 
 // ==================== AUTOMAPPER ====================
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
+
+// ==================== SIGNALR ====================
+builder.Services.AddSignalR();
 
 // ==================== JWT AUTHENTICATION ====================
 var jwtKey = builder.Configuration["Jwt:Key"] ?? "HRM-SGTD-Super-Secret-Key-2024-Must-Be-At-Least-32-Characters";
@@ -70,6 +75,21 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidIssuer = jwtIssuer,
             ValidAudience = jwtAudience,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
+        };
+        
+        // SignalR auth config
+        options.Events = new JwtBearerEvents
+        {
+            OnMessageReceived = context =>
+            {
+                var accessToken = context.Request.Query["access_token"];
+                var path = context.HttpContext.Request.Path;
+                if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/hubs/notifications"))
+                {
+                    context.Token = accessToken;
+                }
+                return Task.CompletedTask;
+            }
         };
     });
 builder.Services.AddAuthorization();
@@ -117,6 +137,8 @@ app.UseCors("AllowFrontend");
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+// Map SignalR Hub
+app.MapHub<NotificationHub>("/hubs/notifications");
 
 // ==================== AUTO MIGRATION + SEED ====================
 using (var scope = app.Services.CreateScope())

@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import api from '../api/axiosConfig';
-import { MagnifyingGlassIcon, FunnelIcon, PlusIcon, TrashIcon, PencilSquareIcon, ArrowDownTrayIcon, ArrowUpTrayIcon } from '@heroicons/react/24/outline';
+import { MagnifyingGlassIcon, FunnelIcon, PlusIcon, TrashIcon, PencilSquareIcon, ArrowDownTrayIcon, ArrowUpTrayIcon, EyeIcon } from '@heroicons/react/24/outline';
+import EmployeeProfileModal from '../components/EmployeeProfileModal';
 
 interface Employee {
     id: number; name: string; title: string; department: string; departmentId?: number;
@@ -19,6 +20,7 @@ export default function Employees() {
     const [showModal, setShowModal] = useState(false);
     const [form, setForm] = useState({ name: '', title: '', departmentId: '', email: '', phone: '', avatar: '' });
     const [editingId, setEditingId] = useState<number | null>(null);
+    const [viewingProfileId, setViewingProfileId] = useState<number | null>(null);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     // Filters
@@ -211,11 +213,14 @@ export default function Employees() {
                                     <td>{emp.department}</td>
                                     <td>{emp.email}</td>
                                     <td><span className={`status-badge ${(emp.status || 'Active').toLowerCase()}`}>{emp.status || 'Active'}</span></td>
-                                    <td>
-                                        <button className="btn btn-secondary btn-sm" onClick={() => handleEdit(emp)} style={{ marginRight: 8, padding: '4px 8px', borderRadius: '8px' }} title="Sửa">
+                                    <td style={{ display: 'flex', gap: '8px' }}>
+                                        <button className="btn btn-secondary btn-sm" onClick={() => setViewingProfileId(emp.id)} style={{ padding: '4px 8px', borderRadius: '8px' }} title="Xem hồ sơ">
+                                            <EyeIcon style={{ width: 16, height: 16 }} />
+                                        </button>
+                                        <button className="btn btn-secondary btn-sm" onClick={() => handleEdit(emp)} style={{ padding: '4px 8px', borderRadius: '8px' }} title="Sửa">
                                             <PencilSquareIcon style={{ width: 16, height: 16 }} />
                                         </button>
-                                        <button className="btn btn-danger btn-sm" onClick={() => handleDelete(emp.id)} style={{ padding: '4px 8px', borderRadius: '8px' }}>
+                                        <button className="btn btn-danger btn-sm" onClick={() => handleDelete(emp.id)} style={{ padding: '4px 8px', borderRadius: '8px' }} title="Xóa">
                                             <TrashIcon style={{ width: 16, height: 16 }} />
                                         </button>
                                     </td>
@@ -225,6 +230,13 @@ export default function Employees() {
                     </table>
                 </div>
             </div>
+
+            {viewingProfileId && (
+                <EmployeeProfileModal
+                    employeeId={viewingProfileId}
+                    onClose={() => setViewingProfileId(null)}
+                />
+            )}
 
             {showModal && (
                 <div className="modal-overlay" onClick={() => setShowModal(false)}>

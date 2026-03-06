@@ -27,6 +27,7 @@ public interface IEmployeeService
 {
     Task<ApiResponse<PagedResult<EmployeeDto>>> GetAllAsync(QueryParameters parameters);
     Task<ApiResponse<EmployeeDto>> GetByIdAsync(int id);
+    Task<ApiResponse<EmployeeProfileDto>> GetProfileAsync(int id);
     Task<ApiResponse<EmployeeDto>> CreateAsync(CreateEmployeeDto dto);
     Task<ApiResponse<EmployeeDto>> UpdateAsync(int id, UpdateEmployeeDto dto);
     Task<ApiResponse<bool>> DeleteAsync(int id);
@@ -75,6 +76,7 @@ public interface ICandidateService
     Task<ApiResponse<PagedResult<CandidateDto>>> GetAllAsync(QueryParameters parameters);
     Task<ApiResponse<CandidateDto>> GetByIdAsync(int id);
     Task<ApiResponse<CandidateDto>> CreateAsync(CreateCandidateDto dto);
+    Task<ApiResponse<CandidateDto>> UpdateStatusAsync(int id, UpdateCandidateStatusDto dto);
     Task<ApiResponse<bool>> DeleteAsync(int id);
 }
 

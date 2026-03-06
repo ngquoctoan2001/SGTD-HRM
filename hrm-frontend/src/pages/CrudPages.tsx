@@ -12,7 +12,7 @@ interface CrudPageProps {
     createFields?: { key: string; label: string; type?: string; options?: any[]; source?: 'employees' | 'departments' | 'candidates' }[];
 }
 
-function CrudPage({ title, description, endpoint, columns, createFields }: CrudPageProps) {
+export default function CrudPage({ title, description, endpoint, columns, createFields }: CrudPageProps) {
     const { user } = useAuthStore();
     const isAdmin = user?.role === 'Admin' || user?.role === 'HR';
     const canCreate = isAdmin || (endpoint === 'leave' && user?.role === 'Employee');

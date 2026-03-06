@@ -24,6 +24,8 @@ public class HrmDbContext : DbContext
     public DbSet<PerformanceReview> PerformanceReviews => Set<PerformanceReview>();
     public DbSet<Asset> Assets => Set<Asset>();
     public DbSet<AssetAssignment> AssetAssignments => Set<AssetAssignment>();
+    public DbSet<SystemConfig> SystemConfigs => Set<SystemConfig>();
+    public DbSet<Notification> Notifications => Set<Notification>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -48,6 +50,8 @@ public class HrmDbContext : DbContext
         modelBuilder.Entity<PerformanceReview>().HasQueryFilter(e => !e.IsDeleted);
         modelBuilder.Entity<Asset>().HasQueryFilter(e => !e.IsDeleted);
         modelBuilder.Entity<AssetAssignment>().HasQueryFilter(e => !e.IsDeleted);
+        modelBuilder.Entity<SystemConfig>().HasQueryFilter(e => !e.IsDeleted);
+        modelBuilder.Entity<Notification>().HasQueryFilter(e => !e.IsDeleted);
 
         // ==================== USER ====================
         modelBuilder.Entity<User>(entity =>
@@ -268,6 +272,31 @@ public class HrmDbContext : DbContext
             entity.HasOne(e => e.Employee)
                   .WithMany(emp => emp.AssetAssignments)
                   .HasForeignKey(e => e.EmployeeId)
+                  .OnDelete(DeleteBehavior.Cascade);
+        });
+
+        // ==================== SYSTEM CONFIG ====================
+        modelBuilder.Entity<SystemConfig>(entity =>
+        {
+            entity.HasIndex(e => e.Key).IsUnique();
+            entity.Property(e => e.Key).HasMaxLength(100).IsRequired();
+            entity.Property(e => e.Value).HasMaxLength(1000).IsRequired();
+            entity.Property(e => e.Description).HasMaxLength(500);
+            entity.Property(e => e.Group).HasMaxLength(100);
+        });
+
+        // ==================== NOTIFICATIONS ====================
+        modelBuilder.Entity<Notification>(entity =>
+        {
+            entity.HasIndex(e => e.UserId);
+            entity.Property(e => e.Title).HasMaxLength(200).IsRequired();
+            entity.Property(e => e.Message).HasMaxLength(1000).IsRequired();
+            entity.Property(e => e.Type).HasMaxLength(50).IsRequired();
+            entity.Property(e => e.Link).HasMaxLength(500);
+            
+            entity.HasOne(e => e.User)
+                  .WithMany()
+                  .HasForeignKey(e => e.UserId)
                   .OnDelete(DeleteBehavior.Cascade);
         });
     }

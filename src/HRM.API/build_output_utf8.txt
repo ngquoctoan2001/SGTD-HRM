@@ -1,0 +1,26 @@
+﻿  Determining projects to restore...
+  All projects are up-to-date for restore.
+  HRM.Domain -> C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Domain\bin\Debug\net10.0\HRM.Domain.dll
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\ContractService.cs(38,30): warning CS8603: Possible null reference return. [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\ContractService.cs(53,82): warning CS8603: Possible null reference return. [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\CrudServices.cs(431,29): error CS0103: The name '_jobRepo' does not exist in the current context [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\CrudServices.cs(434,19): error CS0103: The name '_jobRepo' does not exist in the current context [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\CrudServices.cs(446,25): error CS0029: Cannot implicitly convert type 'string' to 'HRM.Domain.Enums.CandidateStatus' [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\CrudServices.cs(447,21): error CS1061: 'IRepository<Candidate>' does not contain a definition for 'UpdateAsync' and no accessible extension method 'UpdateAsync' accepting a first argument of type 'IRepository<Candidate>' could be found (are you missing a using directive or an assembly reference?) [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\DisciplineRewardService.cs(38,30): warning CS8603: Possible null reference return. [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\DisciplineRewardService.cs(53,74): warning CS8603: Possible null reference return. [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+
+Build FAILED.
+
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\ContractService.cs(38,30): warning CS8603: Possible null reference return. [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\ContractService.cs(53,82): warning CS8603: Possible null reference return. [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\DisciplineRewardService.cs(38,30): warning CS8603: Possible null reference return. [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\DisciplineRewardService.cs(53,74): warning CS8603: Possible null reference return. [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\CrudServices.cs(431,29): error CS0103: The name '_jobRepo' does not exist in the current context [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\CrudServices.cs(434,19): error CS0103: The name '_jobRepo' does not exist in the current context [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\CrudServices.cs(446,25): error CS0029: Cannot implicitly convert type 'string' to 'HRM.Domain.Enums.CandidateStatus' [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\Services\CrudServices.cs(447,21): error CS1061: 'IRepository<Candidate>' does not contain a definition for 'UpdateAsync' and no accessible extension method 'UpdateAsync' accepting a first argument of type 'IRepository<Candidate>' could be found (are you missing a using directive or an assembly reference?) [C:\Users\ADMIN\OneDrive\M├íy t├¡nh\HRM-SGTD\src\HRM.Application\HRM.Application.csproj]
+    4 Warning(s)
+    4 Error(s)
+
+Time Elapsed 00:00:01.26

@@ -4,6 +4,7 @@ public enum CandidateStatus
 {
     New = 0,
     Interviewing = 1,
-    Hired = 2,
-    Rejected = 3
+    Offered = 2,
+    Hired = 3,
+    Rejected = 4
 }

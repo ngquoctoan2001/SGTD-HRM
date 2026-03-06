@@ -31,6 +31,7 @@ const navItems = [
     { label: 'Đánh giá chung', path: '/performance', icon: ChartBarIcon, adminOnly: true },
     { label: 'Tài sản', path: '/assets', icon: CubeIcon, adminOnly: true },
     { label: 'Tuyển dụng', path: '/recruitment', icon: BriefcaseIcon, adminOnly: true },
+    { label: 'Ứng viên (Kanban)', path: '/candidates', icon: UsersIcon, adminOnly: true },
     { label: 'Phỏng vấn', path: '/interview', icon: ChatBubbleLeftRightIcon, adminOnly: true },
     { label: 'Hệ thống Tài khoản', path: '/accounts', icon: UsersIcon, adminOnly: true },
     { label: 'Báo cáo', path: '/reports', icon: DocumentChartBarIcon, adminOnly: true },

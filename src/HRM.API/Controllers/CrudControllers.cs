@@ -26,6 +26,13 @@ public class EmployeesController : ControllerBase
         return r.Success ? Ok(r) : NotFound(r);
     }
 
+    [HttpGet("{id}/profile")]
+    public async Task<IActionResult> GetProfile(int id)
+    {
+        var r = await _service.GetProfileAsync(id);
+        return r.Success ? Ok(r) : NotFound(r);
+    }
+
     [HttpPost]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Create([FromBody] CreateEmployeeDto dto) => Ok(await _service.CreateAsync(dto));
@@ -219,6 +226,14 @@ public class CandidatesController : ControllerBase
     [HttpPost]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Create([FromBody] CreateCandidateDto dto) => Ok(await _service.CreateAsync(dto));
+
+    [HttpPatch("{id}/status")]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> UpdateStatus(int id, [FromBody] UpdateCandidateStatusDto dto)
+    {
+        var r = await _service.UpdateStatusAsync(id, dto);
+        return r.Success ? Ok(r) : NotFound(r);
+    }
 
     [HttpDelete("{id}")]
     [Authorize(Roles = "Admin")]

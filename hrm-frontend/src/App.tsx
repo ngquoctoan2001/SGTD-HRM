@@ -14,6 +14,7 @@ import Contracts from './pages/Contracts';
 import DisciplineRewards from './pages/DisciplineRewards';
 import TrainingCourses from './pages/TrainingCourses';
 import OrgChart from './pages/OrgChart';
+import CandidatesKanban from './pages/CandidatesKanban';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated } = useAuthStore();
@@ -49,6 +50,7 @@ export default function App() {
           <Route path="disciplinerewards" element={<RoleRoute allowedRoles={['Admin', 'HR']}><DisciplineRewards /></RoleRoute>} />
           <Route path="trainingcourses" element={<RoleRoute allowedRoles={['Admin', 'HR']}><TrainingCourses /></RoleRoute>} />
           <Route path="recruitment" element={<RoleRoute allowedRoles={['Admin']}><Recruitment /></RoleRoute>} />
+          <Route path="candidates" element={<RoleRoute allowedRoles={['Admin']}><CandidatesKanban /></RoleRoute>} />
           <Route path="interview" element={<RoleRoute allowedRoles={['Admin']}><Interview /></RoleRoute>} />
           <Route path="performance" element={<RoleRoute allowedRoles={['Admin']}><Performance /></RoleRoute>} />
           <Route path="assets" element={<RoleRoute allowedRoles={['Admin']}><Assets /></RoleRoute>} />
